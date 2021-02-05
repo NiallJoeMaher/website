@@ -1,0 +1,28 @@
+.container {
+  max-width: var(--contentMaxWidth);
+  margin: 0 auto;
+  position: relative;
+}
+
+.container::before {
+  content: "";
+  height: 15vw;
+  width: 15vw;
+  position: fixed;
+  left: -1vw;
+  background: linear-gradient(var(--pink), var(--orange));
+  border-radius: 50%;
+  filter: blur(110px);
+}
+
+.container::after {
+  content: "";
+  height: 20vw;
+  width: 20vw;
+  position: fixed;
+  top: 10vh;
+  right: -6vw;
+  background: linear-gradient(var(--pink), var(--orange));
+  border-radius: 50%;
+  filter: blur(150px);
+}

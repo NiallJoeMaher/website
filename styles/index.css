@@ -45,10 +45,14 @@
   --shadow-4: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
     0 10px 10px -5px rgba(0, 0, 0, 0.04);
 
+  /* TODO:: Sizing */
+  --sz-48: 48rem;
+  --sz-74: 74rem;
+
   /* Containers */
   --containerMaxWidth: 100%;
   --containerHorizontalPadding: 1.25rem;
-  --contentMaxWidth: 1580px;
+  --contentMaxWidth: var(--sz-74);
 
   /* Waves */
   --wave: var(--lightGrey);
@@ -86,6 +90,11 @@ body {
   line-height: 1.65;
   background: var(--docBackground);
   color: var(--textColor);
+  margin: 0;
+}
+
+body:before {
+  overflow-x: hidden;
 }
 
 *:focus {

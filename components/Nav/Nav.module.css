@@ -1,0 +1,19 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.logo {
+  width: 150px;
+  font-size: 36px;
+  font-weight: 900;
+}
+
+.links {
+  display: flex;
+}
+
+.links > div {
+  margin: 0 20px;
+}

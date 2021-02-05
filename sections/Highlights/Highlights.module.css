@@ -22,7 +22,7 @@
   width: 3vw;
   position: absolute;
   left: 30%;
-  bottom: -26%;
+  bottom: 26%;
   border-radius: 50%;
   background: linear-gradient(var(--pink), var(--orange));
 }

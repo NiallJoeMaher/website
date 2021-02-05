@@ -1,8 +1,8 @@
-import Layout from "../components/layout";
 import { getAllPosts } from "../lib/api";
 import Head from "next/head";
 
 import { Intro, Highlights } from "../sections";
+import { Layout } from "../components";
 
 export default function Index({ allPosts }) {
   return (
