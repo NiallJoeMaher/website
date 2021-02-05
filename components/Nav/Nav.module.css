@@ -12,8 +12,15 @@
 
 .links {
   display: flex;
+  align-items: center;
 }
 
-.links > div {
-  margin: 0 20px;
+.links > a + a {
+  margin-left: 20px;
+}
+.links > a {
+  padding: 10px;
+  text-decoration: none;
+  color: var(--white);
+  font-size: var(--p);
 }
