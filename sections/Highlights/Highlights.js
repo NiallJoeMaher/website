@@ -3,7 +3,6 @@ import Link from "next/link";
 import styles from "./Highlights.module.css";
 import DateFormatter from "../../components/date-formatter";
 export default function Highlights({ posts }) {
-  console.log({ posts });
   return (
     <section className={styles.grid}>
       {posts.map((item) => (

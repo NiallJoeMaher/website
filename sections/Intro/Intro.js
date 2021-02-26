@@ -6,8 +6,9 @@ export default function Intro() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState(null);
 
-  const onSubmit = async () => {
-    const url = `https://api.convertkit.com/v3/forms/${process.env.FORM_ID}/subscribe`;
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const url = `/api/subscribe`;
     try {
       const response = await fetch(url, {
         method: "POST",
@@ -16,7 +17,6 @@ export default function Intro() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          api_key: process.env.CONVERT_KIT_PUBLIC,
           email,
         }),
       });
@@ -35,7 +35,7 @@ export default function Intro() {
           Exploring Ideas on Web <br /> Development and Business.
         </h1>
         <p className={styles.subtitle}>+ and some random stuff.</p>
-        <div className={styles.inputContainer}>
+        <form className={styles.inputContainer} onSubmit={handleSubmit}>
           <input
             type="email"
             className={styles.input}
@@ -44,10 +44,10 @@ export default function Intro() {
               setEmail(e.target.value);
             }}
           />
-          <button className={styles.button} onClick={onSubmit}>
+          <button className={styles.button} type="submit">
             Subscribe
           </button>
-        </div>
+        </form>
       </section>
     </>
   );
