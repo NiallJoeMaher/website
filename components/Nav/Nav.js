@@ -2,13 +2,24 @@ import styles from "./Nav.module.css";
 import Twitter from "../../svg/twitter.svg";
 import Instagram from "../../svg/instagram.svg";
 import Linkedin from "../../svg/linkedin.svg";
+import Image from "next/image";
 
 import Link from "next/link";
 
 export default function Nav() {
   return (
     <nav className={styles.nav}>
-      <div className={styles.logo}>NM.</div>
+      <Link href="/">
+        <a>
+          <Image
+            src="/images/logo.png"
+            alt="Picture of the author"
+            width={200}
+            height={80}
+          />
+        </a>
+      </Link>
+
       <div className={styles.links}>
         <Link href="/about">
           <a>About</a>
