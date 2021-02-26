@@ -22,7 +22,7 @@
   --bodyFont: "Open Sans", sans-serif;
   --headingWeight: 400;
   --bodyWeight: 400;
-  --baseFontSize: 112.5%;
+  --baseFontSize: 95%;
 
   --p: 1.25rem;
   --h1: 3.052rem;
@@ -69,6 +69,7 @@
 @media screen and (min-width: 768px) {
   :root {
     --containerMaxWidth: 1280px;
+    --baseFontSize: 112.5%;
   }
 }
 

@@ -21,12 +21,12 @@ export default function Nav() {
       </Link>
 
       <div className={styles.links}>
-        <Link href="/about">
+        {/* <Link href="/about">
           <a>About</a>
         </Link>
         <Link href="/contact">
           <a>Contact</a>
-        </Link>
+        </Link> */}
         <a
           aria-label="Twitter"
           href="https://twitter.com/nialljoemaher"

@@ -15,10 +15,11 @@
 }
 
 .inputContainer {
-  margin-top: 50px;
   height: 55px;
-  width: 600px;
+  width: 90%;
+  max-width: 500px;
   display: flex;
+  margin: 2rem;
 }
 
 .button {

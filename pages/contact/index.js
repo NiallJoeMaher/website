@@ -9,7 +9,7 @@ export default function Contact() {
         <Head>
           <title>About me | Niall Maher</title>
         </Head>
-        <div>Contact</div>
+        <div>Contact | COMING SOON</div>
       </Layout>
     </>
   );

@@ -11,12 +11,12 @@ export default function Footer() {
     <footer className={styles.footer}>
       <div className={styles.container}>
         <div className={styles.links}>
-          <Link href="/about">
+          {/* <Link href="/about">
             <a>About</a>
           </Link>
           <Link href="/contact">
             <a>Contact</a>
-          </Link>
+          </Link> */}
         </div>
         <div className={styles.socialIcons}>
           <a
