@@ -39,3 +39,7 @@
   font-size: var(--p);
   color: var(--white);
 }
+
+.input:disabled {
+  border: none;
+}
