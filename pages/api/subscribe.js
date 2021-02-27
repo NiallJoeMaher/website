@@ -2,6 +2,7 @@ export default async function handler(req, res) {
   const { email } = req.body;
   const url = `https://api.convertkit.com/v3/forms/${process.env.FORM_ID}/subscribe`;
   try {
+    if (!email) throw "No email provided";
     const response = await fetch(url, {
       method: "POST",
       mode: "cors",
@@ -14,10 +15,9 @@ export default async function handler(req, res) {
       }),
     });
     const data = await response.json();
-    // console.log({ stuff: data.error });
-    // if (!!data.error) throw new Error("Error");
-    res.status(201).json({ data });
+    if (data.error) throw data.error;
+    res.status(201).json(data);
   } catch (error) {
-    res.status(400);
+    res.status(400).json({ error });
   }
 }

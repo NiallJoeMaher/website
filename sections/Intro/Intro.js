@@ -2,11 +2,24 @@ import { useState } from "react";
 
 import styles from "./Intro.module.css";
 
-const [SUCESS, ERROR] = ["SUCESS", "ERROR"];
+const [SUCESS, ERROR, ACTIVE_SUB] = ["SUCESS", "ERROR", "ACTIVE_SUB"];
 
 export default function Intro() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState(null);
+
+  const setStatusMessage = (status) => {
+    const statuses = {
+      [SUCESS]:
+        "Wooo thanks for subscribing! 🥳 Check your email to confirm your subscription.",
+      [ERROR]:
+        "Something went wrong, check your email and please try again... 😢",
+      [ACTIVE_SUB]:
+        "Trying to subscribe again? You are already a subscriber! Check your spam if you haven't been getting my newsletter. 😉",
+    };
+
+    return statuses[status];
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -23,8 +36,9 @@ export default function Intro() {
         }),
       });
       const data = await response.json();
-      console.log({ data });
-      setStatus(SUCESS);
+      if (data?.subscription.state === "active") setStatus(ACTIVE_SUB);
+      if (data?.subscription.state === "inactive") setStatus(SUCESS);
+      if (data.error) throw new Error();
       setEmail("");
     } catch (error) {
       setStatus(ERROR);
@@ -40,7 +54,7 @@ export default function Intro() {
         <p className={styles.subtitle}>+ and some random stuff.</p>
         <form className={styles.inputContainer} onSubmit={handleSubmit}>
           <input
-            disabled={status === SUCESS}
+            disabled={status === SUCESS || status === ACTIVE_SUB}
             type="email"
             className={styles.input}
             value={email}
@@ -51,18 +65,12 @@ export default function Intro() {
           <button
             className={styles.button}
             type="submit"
-            disabled={status === SUCESS}
+            disabled={status === SUCESS || status === ACTIVE_SUB}
           >
             Subscribe
           </button>
         </form>
-        {status === SUCESS && <p> Wooo thanks for subscribing! 🥳</p>}
-        {status === ERROR && (
-          <p>
-            {" "}
-            Something went wrong, check your email and please try again... 😢
-          </p>
-        )}
+        {status && <p>{setStatusMessage(status)}</p>}
       </section>
     </>
   );
