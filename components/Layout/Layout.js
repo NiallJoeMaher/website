@@ -8,8 +8,10 @@ export default function Layout({ preview, children }) {
     <>
       <Meta />
       <div className={styles.container}>
-        <Nav />
-        <main>{children}</main>
+        <div className={styles.wrapper}>
+          <Nav />
+          <main>{children}</main>
+        </div>
       </div>
       <Footer />
     </>
