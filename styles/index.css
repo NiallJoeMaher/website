@@ -99,11 +99,12 @@ body:before {
 }
 
 *:focus {
-  outline-color: var(--pink);
+  outline-color: var(--orange);
+  margin: 2px;
 }
 
 *::selection {
-  background-color: var(--pink);
+  background-color: var(--orange);
   color: var(--white);
 }
 

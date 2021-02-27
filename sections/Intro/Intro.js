@@ -22,7 +22,7 @@ export default function Intro() {
           email,
         }),
       });
-      const data = response.json();
+      const data = await response.json();
       console.log({ data });
       setStatus(SUCESS);
       setEmail("");

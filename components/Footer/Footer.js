@@ -4,7 +4,7 @@ import Linkedin from "../../svg/linkedin.svg";
 
 import styles from "./Footer.module.css";
 
-import Link from "next/link";
+// import Link from "next/link";
 
 export default function Footer() {
   return (
