@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-import { Intro, Highlights } from "../sections";
+import { Intro, Highlights } from "../components/sections";
 import { Layout } from "../components";
 
 export default function Index({ allPosts, newPosts }) {
