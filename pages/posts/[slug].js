@@ -3,76 +3,103 @@ import ErrorPage from "next/error";
 import Container from "../../components/container";
 import PostBody from "../../components/post-body";
 import PostHeader from "../../components/post-header";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import { INLINES, BLOCKS } from "@contentful/rich-text-types";
 
-import { getPostBySlug, getAllPosts } from "../../lib/api";
 import PostTitle from "../../components/post-title";
 import Head from "next/head";
 import { Layout } from "../../components";
 
-import markdownToHtml from "../../lib/markdownToHtml";
+import styles from "./post.module.css";
 
-export default function Post({ post, morePosts, preview }) {
+const options = {
+  renderNode: {
+    [BLOCKS.EMBEDDED_ASSET]: (node, next) => {
+      const { file, title } = node.data.target.fields;
+      const { url } = file;
+      return <img alt={title} src={`https:${url}`} />;
+    },
+  },
+};
+
+export default function Post({ post }) {
   const router = useRouter();
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />;
   }
   return (
-    <Layout preview={preview}>
-      <Container>
+    <Layout>
+      <div className="">
         {router.isFallback ? (
           <PostTitle>Loading…</PostTitle>
         ) : (
           <>
-            <article className="mb-32">
+            <article className={styles["post"]}>
               <Head>
                 <title>{post.title} | Niall Maher</title>
-                <meta property="og:image" content={post.ogImage.url} />
+                <meta
+                  property="og:image"
+                  content={post.ogImage.fields.file.url}
+                />
               </Head>
-              <PostHeader
-                title={post.title}
-                coverImage={post.coverImage}
-                date={post.date}
-                author={post.author}
-              />
-              <PostBody content={post.content} />
+              <div className="mx-auto">
+                <PostHeader
+                  title={post.title}
+                  coverImage={`https:${post.coverImage.fields.file.url}`}
+                  date={post.date}
+                />
+              </div>
+              {documentToReactComponents(post.content, options)}
             </article>
           </>
         )}
-      </Container>
+      </div>
     </Layout>
   );
 }
 
+async function getContentfulPosts() {
+  const client = require("contentful").createClient({
+    space: process.env.CONTENTFUL_SPACE_ID,
+    accessToken: process.env.CONTENTFUL_DELIVERY,
+  });
+
+  async function fetchEntries() {
+    const entries = await client.getEntries();
+    if (entries.items) return entries.items;
+    console.log(`Error getting Entries for ${contentType.name}.`);
+  }
+
+  const newPosts = await fetchEntries();
+
+  return newPosts;
+}
+
 export async function getStaticProps({ params }) {
-  const post = getPostBySlug(params.slug, [
-    "title",
-    "date",
-    "slug",
-    "author",
-    "content",
-    "ogImage",
-    "coverImage",
-  ]);
-  const content = await markdownToHtml(post.content || "");
+  const newPosts = await getContentfulPosts();
+
+  const newPost = newPosts.filter((post) => {
+    return post.fields.slug === params.slug;
+  });
 
   return {
     props: {
       post: {
-        ...post,
-        content,
+        ...newPost[0].fields,
+        content: newPost[0].fields.body,
       },
     },
   };
 }
 
 export async function getStaticPaths() {
-  const posts = getAllPosts(["slug"]);
+  const newPosts = await getContentfulPosts();
 
   return {
-    paths: posts.map((post) => {
+    paths: newPosts.map((post) => {
       return {
         params: {
-          slug: post.slug,
+          slug: post.fields.slug,
         },
       };
     }),

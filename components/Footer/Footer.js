@@ -2,15 +2,13 @@ import Twitter from "../../svg/twitter.svg";
 import Instagram from "../../svg/instagram.svg";
 import Linkedin from "../../svg/linkedin.svg";
 
-import styles from "./Footer.module.css";
-
 // import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className={styles.footer}>
-      <div className={styles.container}>
-        <div className={styles.links}>
+    <footer className="bg-black py-8 mt-8 border-0 border-t">
+      <div className="max-w-5xl mx-auto">
+        <div>
           {/* <Link href="/about">
             <a>About</a>
           </Link>
@@ -18,15 +16,17 @@ export default function Footer() {
             <a>Contact</a>
           </Link> */}
         </div>
-        <div className={styles.socialIcons}>
+        <div className="flex justify-end mx-2 sm:mx-6 lg:mx-auto">
           <a
+            className="h-12 w-12 flex justify-center items-center rounded-full bg-gradient-fun"
             aria-label="Twitter"
             href="https://twitter.com/nialljoemaher"
             target="_blank"
           >
-            <Twitter fill="hsl(0, 0%, 0%)" height="24" />
+            <Twitter fill="hsl(0, 0%, 0%)" height="24" width="24" />
           </a>
           <a
+            className="ml-6 h-12 w-12 flex justify-center items-center rounded-full bg-gradient-fun"
             aria-label="LinkedIn"
             href="https://www.linkedin.com/in/nialljoemaher/"
             target="_blank"
@@ -34,6 +34,7 @@ export default function Footer() {
             <Linkedin fill="hsl(0, 0%, 0%)" height="24" />
           </a>
           <a
+            className="ml-6 h-12 w-12 flex justify-center items-center rounded-full bg-gradient-fun"
             aria-label="Instagram"
             href="https://www.instagram.com/nialljoemaher/"
             target="_blank"
