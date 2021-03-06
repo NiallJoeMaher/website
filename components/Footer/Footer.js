@@ -6,7 +6,7 @@ import Linkedin from "../../svg/linkedin.svg";
 
 export default function Footer() {
   return (
-    <footer className="bg-black py-8 mt-8 border-0 border-t">
+    <footer className="relative bg-black py-8 mt-8 border-0 border-t">
       <div className="max-w-5xl mx-auto">
         <div>
           {/* <Link href="/about">

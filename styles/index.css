@@ -25,4 +25,18 @@
   .bg-gradient-fun {
     background: linear-gradient(#c53b8e, #fe5f3d);
   }
+
+  .fancy-pants-link {
+    color: #c53b8e;
+    transition: 0.3s ease-in-out all;
+    background-color: #c53b8e;
+    background-image: linear-gradient(#c53b8e, #fe5f3d);
+    background-size: 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    border-bottom: 2px solid #fe5f3d;
+  }
 }

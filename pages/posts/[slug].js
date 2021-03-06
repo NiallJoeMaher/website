@@ -1,7 +1,6 @@
 import { useRouter } from "next/router";
 import ErrorPage from "next/error";
-import Container from "../../components/container";
-import PostBody from "../../components/post-body";
+import { BioFooter } from "../../components";
 import PostHeader from "../../components/post-header";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { INLINES, BLOCKS } from "@contentful/rich-text-types";
@@ -51,6 +50,7 @@ export default function Post({ post }) {
               </div>
               {documentToReactComponents(post.content, options)}
             </article>
+            <BioFooter />
           </>
         )}
       </div>
