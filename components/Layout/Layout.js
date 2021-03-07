@@ -2,15 +2,19 @@ import Meta from "../meta";
 
 import { Nav, Footer } from "../../components";
 
-export default function Layout({ preview, children }) {
+export default function Layout({ children, absoluteOrbs }) {
   return (
-    <div className="reative bg-gray-900">
+    <div className="relative bg-gray-900 overflow-y-hidden">
       <div
-        className="fixed h-96 w-96 -left-48 top-36 bg-contain"
+        className={`${
+          absoluteOrbs ? "absolute" : "fixed"
+        } h-56 w-56 -left-32 top-36 md:h-96 md:w-96 md:-left-24 bg-contain`}
         style={{ backgroundImage: 'url("/images/elipse.png")' }}
       />
       <div
-        className="fixed h-96 w-96 -right-36 top-16 bg-contain"
+        className={`${
+          absoluteOrbs ? "absolute" : "fixed"
+        } h-56 w-56 -right-32 md:h-96 md:w-96 md:-right-36 top-16 bg-contain`}
         style={{ backgroundImage: 'url("/images/elipse.png")' }}
       />
       <Meta />

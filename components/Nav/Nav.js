@@ -1,6 +1,7 @@
 import Twitter from "../../svg/twitter.svg";
 import Instagram from "../../svg/instagram.svg";
 import Linkedin from "../../svg/linkedin.svg";
+import YouTube from "../../svg/youtube.svg";
 import Image from "next/image";
 
 import Link from "next/link";
@@ -8,14 +9,14 @@ import Link from "next/link";
 export default function Nav() {
   return (
     <div className="">
-      <nav className="max-w-5xl flex justify-between items-center mx-2 sm:mx-6 lg:mx-auto">
+      <nav className="py-4 max-w-5xl flex justify-between items-center mx-2 sm:mx-6 lg:mx-auto">
         <Link href="/">
-          <a className="py-2">
+          <a>
             <Image
               src="/images/logo.png"
-              alt="Picture of the author"
-              width={180}
-              height={72}
+              alt="Niall Maher in bad hand writing"
+              width={128}
+              height={52}
             />
           </a>
         </Link>
@@ -27,6 +28,14 @@ export default function Nav() {
         <Link href="/contact">
           <a>Contact</a>
         </Link> */}
+          <a
+            className="mr-6"
+            aria-label="Twitter"
+            href="https://www.youtube.com/channel/UCvI5azOD4eDumpshr00EfIw"
+            target="_blank"
+          >
+            <YouTube fill="hsl(255, 100%, 100%)" height="24" />
+          </a>
           <a
             className="mr-6"
             aria-label="Twitter"

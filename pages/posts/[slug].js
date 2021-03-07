@@ -27,7 +27,7 @@ export default function Post({ post }) {
     return <ErrorPage statusCode={404} />;
   }
   return (
-    <Layout>
+    <Layout absoluteOrbs>
       <div className="">
         {router.isFallback ? (
           <PostTitle>Loading…</PostTitle>

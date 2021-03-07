@@ -1,6 +1,7 @@
 import Twitter from "../../svg/twitter.svg";
 import Instagram from "../../svg/instagram.svg";
 import Linkedin from "../../svg/linkedin.svg";
+import YouTube from "../../svg/youtube.svg";
 
 // import Link from "next/link";
 
@@ -19,6 +20,14 @@ export default function Footer() {
         <div className="flex justify-end mx-2 sm:mx-6 lg:mx-auto">
           <a
             className="h-12 w-12 flex justify-center items-center rounded-full bg-gradient-fun"
+            aria-label="Twitter"
+            href="https://twitter.com/nialljoemaher"
+            target="_blank"
+          >
+            <YouTube fill="hsl(0, 0%, 0%)" height="24" width="24" />
+          </a>
+          <a
+            className="ml-6 h-12 w-12 flex justify-center items-center rounded-full bg-gradient-fun"
             aria-label="Twitter"
             href="https://twitter.com/nialljoemaher"
             target="_blank"

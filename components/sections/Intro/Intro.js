@@ -47,7 +47,7 @@ export default function Intro() {
     <>
       <section className="relative my-20 mx-2 sm:mx-6 lg:mx-auto">
         <h1 className="text-center text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl">
-          Exploring Ideas on Web <br /> Development and Business.
+          Exploring Ideas on Web <br /> Development and Business
         </h1>
         <p className="text-center mt-2 mb-12 text-xl tracking-tight font-semibold  text-gray-400 sm:text-3xl md:text-4xl">
           + some random stuff.
