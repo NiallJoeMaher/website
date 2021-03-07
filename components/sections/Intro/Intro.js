@@ -50,7 +50,7 @@ export default function Intro() {
           Exploring Ideas on Web <br /> Development and Business.
         </h1>
         <p className="text-center mt-2 mb-12 text-xl tracking-tight font-semibold  text-gray-400 sm:text-3xl md:text-4xl">
-          + and some random stuff.
+          + some random stuff.
         </p>
         <form className="mb-8 flex max-w-lg mx-auto" onSubmit={handleSubmit}>
           <div className="relative flex items-stretch flex-grow focus-within:z-10">
