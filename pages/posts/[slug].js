@@ -3,7 +3,7 @@ import ErrorPage from "next/error";
 import { BioFooter } from "../../components";
 import PostHeader from "../../components/post-header";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import { INLINES, BLOCKS } from "@contentful/rich-text-types";
+import { BLOCKS } from "@contentful/rich-text-types";
 
 import PostTitle from "../../components/post-title";
 import Head from "next/head";
@@ -13,7 +13,7 @@ import styles from "./post.module.css";
 
 const options = {
   renderNode: {
-    [BLOCKS.EMBEDDED_ASSET]: (node, next) => {
+    [BLOCKS.EMBEDDED_ASSET]: (node) => {
       const { file, title } = node.data.target.fields;
       const { url } = file;
       return <img alt={title} src={`https:${url}`} />;
@@ -26,6 +26,7 @@ export default function Post({ post }) {
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />;
   }
+
   return (
     <Layout absoluteOrbs>
       <div className="">
@@ -89,6 +90,7 @@ export async function getStaticProps({ params }) {
         content: newPost[0].fields.body,
       },
     },
+    revalidate: 1,
   };
 }
 
