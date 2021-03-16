@@ -42,9 +42,22 @@ export default function Meta() {
       <meta
         name="description"
         content={`Exploring Ideas on Modern Web
-        Development and Technology Business.`}
+        Development and the Software Business.`}
+        key="description"
       />
-      <meta property="og:image" content={HOME_OG_IMAGE_URL} />
+      <meta
+        name="og:description"
+        content={`Exploring Ideas on Modern Web
+        Development and the Software Business.`}
+        key="og:description"
+      />
+      <meta
+        name="og:title"
+        content={`Niall Maher writing on Modern Web
+        Development and the Software Business.`}
+        key="og:title"
+      />
+      <meta property="og:image" content={HOME_OG_IMAGE_URL} key="og:image" />
     </Head>
   );
 }

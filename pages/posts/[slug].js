@@ -1,12 +1,13 @@
 import { useRouter } from "next/router";
 import ErrorPage from "next/error";
+import Head from "next/head";
 import { BioFooter } from "../../components";
 import PostHeader from "../../components/post-header";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BLOCKS } from "@contentful/rich-text-types";
 
 import PostTitle from "../../components/post-title";
-import Head from "next/head";
+
 import { Layout } from "../../components";
 
 import styles from "./post.module.css";
@@ -36,10 +37,22 @@ export default function Post({ post }) {
           <>
             <article className={styles["post"]}>
               <Head>
-                <title>{post.title} | Niall Maher</title>
+                <title>{post.title}</title>
+                <meta key="og:title" property="og:title" content={post.title} />
                 <meta
+                  key="og:image"
                   property="og:image"
-                  content={post.ogImage.fields.file.url}
+                  content={`https:${post.ogImage.fields.file.url}`}
+                />
+                <meta
+                  key="og:description"
+                  property="og:description"
+                  content={post.excerpt}
+                />
+                <meta
+                  key="description"
+                  property="description"
+                  content={post.excerpt}
                 />
               </Head>
               <div className="mx-auto">
