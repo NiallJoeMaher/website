@@ -14,9 +14,9 @@ export default function Nav() {
           <a>
             <Image
               src="/images/logo.png"
-              alt="Niall Maher in bad hand writing"
-              width={128}
-              height={52}
+              alt="Niall as f*ck"
+              width={80}
+              height={80}
             />
           </a>
         </Link>
