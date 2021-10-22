@@ -20,8 +20,8 @@ export default function Footer() {
         <div className="flex justify-end mx-2 sm:mx-6 lg:mx-auto">
           <a
             className="h-12 w-12 flex justify-center items-center rounded-full bg-gradient-fun"
-            aria-label="Twitter"
-            href="https://twitter.com/nialljoemaher"
+            aria-label="YouTube"
+            href="https://www.youtube.com/channel/UCvI5azOD4eDumpshr00EfIw"
             target="_blank"
           >
             <YouTube fill="hsl(0, 0%, 0%)" height="24" width="24" />
