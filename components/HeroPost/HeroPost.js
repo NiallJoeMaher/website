@@ -1,6 +1,16 @@
 import Link from "next/link";
-import generateTagColors from "../../util/generateTagColors";
 export default function HeroPost({ post }) {
+  const generateTagColors = (category) => {
+    const types = {
+      "WEB DEV": "pink",
+      BUSINESS: "blue",
+      UNDEFINED: "yellow",
+      GADGETS: "red",
+      NONSENSE: "indigo",
+      NEW: "green",
+    };
+    return types[category?.toUpperCase()] || types["UNDEFINED"];
+  };
   const tagColor = generateTagColors(post.fields.category);
   return (
     <div className="relative grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 mb-4 lg:mb-12 lg:gap-10">
