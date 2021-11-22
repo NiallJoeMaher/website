@@ -10,7 +10,7 @@ import PostTitle from "../../components/post-title";
 
 import { Layout } from "../../components";
 
-import styles from "./post.module.css";
+import styles from "./blog.module.css";
 
 const options = {
   renderNode: {

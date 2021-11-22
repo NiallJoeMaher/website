@@ -1,5 +1,5 @@
 .post {
-  @apply text-lg leading-relaxed text-white max-w-3xl mx-2 sm:mx-6 md:mx-auto;
+  @apply text-lg leading-relaxed text-gray-800 max-w-3xl mx-2 sm:mx-6 md:mx-auto;
 }
 
 .post p,
@@ -9,18 +9,18 @@
 }
 
 .post a {
-  color: #c53b8e;
-  transition: 0.3s ease-in-out all;
-  background-color: #c53b8e;
-  background-image: linear-gradient(#c53b8e, #fe5f3d);
-  background-size: 100%;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
-  border-bottom: 2px solid #fe5f3d;
+  @apply transition duration-500 ease-in-out relative bg-clip-text text-transparent bg-gradient-to-b from-niall-pink to-niall-orange;
 }
+
+.post a::after {
+  content: "";
+  @apply absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-b from-niall-pink to-niall-orange;
+}
+
+.post a:hover, .post a:hover .post a::after {
+  @apply from-niall-pink-600 to-niall-orange-600;
+}
+
 
 .post h2 {
   @apply text-3xl mt-12 mb-4 leading-snug font-semibold;
