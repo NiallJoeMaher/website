@@ -1,7 +1,7 @@
 import { Children } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import generateTagColors from "../../util/generateTagColor";
-
 export default function Posts({ posts }) {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-10">
@@ -15,11 +15,13 @@ export default function Posts({ posts }) {
             >
               <Link href={`/blog/${post.fields.slug}`}>
                 <a aria-label={post.fields.title}>
-                  <div className="flex-shrink-0 ">
-                    <img
-                      className="h-48 w-full object-cover rounded-lg transition-shadow shadow hover:shadow-lg"
+                  <div className="relative flex-shrink-0 h-48 w-full object-cover rounded-lg transition-shadow shadow hover:shadow-lg">
+                    <Image
+                      layout="fill"
                       src={`https:${post.fields.coverImage.fields.file.url}`}
-                      alt=""
+                      alt={post.fields.title}
+                      placeholder="blur"
+                      blurDataURL={`https:${post.fields.coverImage.fields.file.url}?w=5`}
                     />
                   </div>
                 </a>
