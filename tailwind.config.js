@@ -1,6 +1,6 @@
 module.exports = {
   purge: {
-    constent: ["./components/**/*.js", "./pages/**/*.js"],
+    content: ["./components/**/*.js", "./pages/**/*.js"],
     purge: {
       safelist: [
         "pink-600",
