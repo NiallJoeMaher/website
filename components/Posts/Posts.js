@@ -19,7 +19,7 @@ export default function Posts({ posts }) {
                     <Image
                       className="rounded-lg"
                       layout="fill"
-                      src={`https:${post.fields.coverImage.fields.file.url}`}
+                      src={`https:${post.fields.coverImage.fields.file.url}?w=450`}
                       alt={post.fields.title}
                       placeholder="blur"
                       blurDataURL={`https:${post.fields.coverImage.fields.file.url}?w=5`}

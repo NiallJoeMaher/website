@@ -20,7 +20,7 @@ export default function Nav() {
   const router = useRouter();
 
   return (
-    <div className="text-gray-400">
+    <div className="text-gray-500">
       <nav className="py-4 max-w-7xl flex justify-between items-center mx-2 sm:mx-6 lg:mx-auto">
         <Link href="/">
           <a>

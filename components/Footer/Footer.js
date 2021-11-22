@@ -26,10 +26,10 @@ export default function Footer() {
               More
             </h4>
             <Link href="/about">
-              <a className="text-gray-400 hover:text-gray-500 mb-2">About</a>
+              <a className="text-gray-300 hover:text-gray-400 mb-2">About</a>
             </Link>
             <Link href="/contact">
-              <a className="text-gray-400 hover:text-gray-500">Contact</a>
+              <a className="text-gray-300 hover:text-gray-400">Contact</a>
             </Link>
           </div>
           <div className="flex flex-col mb-6">
@@ -37,10 +37,10 @@ export default function Footer() {
               Useful Links
             </h4>
             <Link href="/about">
-              <a className="text-gray-400 hover:text-gray-500 mb-2">About</a>
+              <a className="text-gray-300 hover:text-gray-400 mb-2">About</a>
             </Link>
             <Link href="/contact">
-              <a className="text-gray-400 hover:text-gray-500 mb-2">Contact</a>
+              <a className="text-gray-300 hover:text-gray-400 mb-2">Contact</a>
             </Link>
           </div>
           <div />
