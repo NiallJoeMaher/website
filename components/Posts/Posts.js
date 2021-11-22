@@ -11,12 +11,13 @@ export default function Posts({ posts }) {
           return (
             <div
               key={post.fields.title}
-              className="flex flex-1 flex-col  overflow-hidden"
+              className="flex flex-1 flex-col overflow-hidden"
             >
               <Link href={`/blog/${post.fields.slug}`}>
                 <a aria-label={post.fields.title}>
-                  <div className="relative flex-shrink-0 h-48 w-full object-cover rounded-lg transition-shadow shadow hover:shadow-lg">
+                  <div className="relative flex-shrink-0 h-48 w-full object-cover transition-shadow shadow hover:shadow-lg">
                     <Image
+                      className="rounded-lg"
                       layout="fill"
                       src={`https:${post.fields.coverImage.fields.file.url}`}
                       alt={post.fields.title}
