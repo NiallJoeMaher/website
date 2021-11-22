@@ -1,7 +1,7 @@
 import Head from "next/head";
 
-import { Intro, Highlights } from "../components/sections";
-import { Layout } from "../components";
+import { Intro, Highlights } from "../../components/sections";
+import { Layout } from "../../components";
 
 export default function Newsletter({ allPosts, newPosts }) {
   return (
