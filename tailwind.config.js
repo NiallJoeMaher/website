@@ -1,7 +1,23 @@
-const colors = require("tailwindcss/colors");
-
 module.exports = {
-  purge: ["./components/**/*.js", "./pages/**/*.js"],
+  purge: {
+    constent: ["./components/**/*.js", "./pages/**/*.js"],
+    purge: {
+      safelist: [
+        "pink-600",
+        "pink-200",
+        "blue-600",
+        "blue-200",
+        "yellow-600",
+        "yellow-200",
+        "red-600",
+        "red-200",
+        "indigo-600",
+        "indigo-200",
+        "green-600",
+        "green-200",
+      ],
+    },
+  },
   theme: {
     extend: {
       colors: {
