@@ -1,7 +1,7 @@
 import { Children } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import generateTagColors from "../../util/generateTagColor";
+import generateTagColors from "../../utils/generateTagColor";
 export default function Posts({ posts }) {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-10">
@@ -46,11 +46,6 @@ export default function Posts({ posts }) {
                     {post.fields.excerpt}
                   </p>
                 </div>
-                {/* <div className="mt-6 flex items-center">
-                <div className="flex space-x-1 text-sm text-gray-500">
-                  <span>10 min read</span>
-                </div>
-              </div> */}
               </div>
             </div>
           );

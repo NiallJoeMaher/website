@@ -4,7 +4,7 @@ import Head from "next/head";
 import { BioFooter } from "../../components";
 import PostHeader from "../../components/post-header";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import { BLOCKS } from "@contentful/rich-text-types";
+import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 
 import PostTitle from "../../components/post-title";
 
@@ -18,6 +18,32 @@ const options = {
       const { file, title } = node.data.target.fields;
       const { url } = file;
       return <img alt={title} src={`https:${url}`} />;
+    },
+    [INLINES.HYPERLINK]: (node, children) => {
+      if (node.data.uri.includes("youtube.com/embed/")) {
+        return (
+          <div className="relative" style={{ paddingTop: "56.25%" }}>
+            <iframe
+              className="absolute inset-0 w-full h-full shadow-xl"
+              // width="560"
+              // height="315"
+              src={node.data.uri}
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          </div>
+        );
+      }
+      return (
+        <a
+          target={`${node.data.uri.includes("niall.af") ? "_self" : "_blank"}`}
+          href={node.data.uri}
+        >
+          {children}
+        </a>
+      );
     },
   },
 };

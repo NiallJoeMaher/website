@@ -1,5 +1,5 @@
 import Link from "next/link";
-import generateTagColors from "../../util/generateTagColor";
+import generateTagColors from "../../utils/generateTagColor";
 export default function HeroPost({ post }) {
   const tagColor = generateTagColors(post.fields.category);
   return (

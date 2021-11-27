@@ -1,35 +1,40 @@
 import Image from "next/image";
-
+import Link from "next/link";
 export default function BioFooter() {
   return (
-    <div className="max-w-3xl mx-auto border-t pt-6">
+    <div className="max-w-3xl mx-auto border-t-2 pt-6 border-gray-300">
       <div className="flex mx-2 sm:mx-6 md:mx-auto">
         <div className="mr-4 flex-shrink-0 self-center">
-          <Image height={70} width={70} src="/images/hotperson.jpg" />
+          <Image
+            className="rounded-full"
+            height={70}
+            width={70}
+            src="/images/headshot-bio.webp"
+          />
         </div>
         <div>
-          <h4 className="text-white text-lg font-bold">
+          <h4 className="text-gray-800 text-lg md:text-xl font-bold">
             Written by Niall Maher
           </h4>
-          <p className="mt-1 text-white">
-            Writing about business JavaScript and web development | CTO @{" "}
+          <p className="mt-1 text-gray-800">
+            Articles and thoughts on running a tech startup and building stuff
+            that people love to use. Founder @{" "}
             <a
               className="fancy-pants-link"
               target="_blank"
-              href="https://spark-hq.com"
+              href="https://myqu.io"
             >
-              Spark
-            </a>{" "}
-            (Dublin, Ireland) | Building{" "}
-            <a
-              className="fancy-pants-link"
-              target="_blank"
-              href="https://www.youtube.com/channel/UCvI5azOD4eDumpshr00EfIw"
-            >
-              Codú Community
+              MYQU
             </a>
-            , a Web Development Community. Often likes to build things while
-            drinking a beer and very seldom sarcastic.
+            . Subscribe to my{" "}
+            <Link href="/newsletter">
+              <a className="fancy-pants-link">newsletter</a>
+            </Link>{" "}
+            for new articles and posts I find interesting{" "}
+            <Link href="/newsletter">
+              <a className="fancy-pants-link">here</a>
+            </Link>
+            .
           </p>
         </div>
       </div>

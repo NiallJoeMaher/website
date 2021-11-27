@@ -1,5 +1,5 @@
 .post {
-  @apply text-lg leading-relaxed text-gray-800 max-w-3xl mx-2 sm:mx-6 md:mx-auto;
+  @apply text-lg md:text-xl leading-relaxed text-gray-800 max-w-3xl mx-2 sm:mx-6 md:mx-auto;
 }
 
 .post p,
@@ -55,3 +55,4 @@
 .post pre > code {
   @apply bg-gray-100 px-6 block;
 }
+

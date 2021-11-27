@@ -13,7 +13,12 @@ export default function Blog({ posts }) {
           <meta
             key="og:title"
             property="og:title"
-            content="Niall Maher's Blog"
+            content="Niall Maher's Blog on building scalable startups."
+          />
+          <meta
+            key="og:image"
+            property="og:image"
+            content="/images/og/blog-og.png"
           />
           <meta
             key="og:description"
