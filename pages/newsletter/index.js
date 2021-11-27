@@ -30,7 +30,28 @@ export default function Newsletter() {
     <>
       <Layout>
         <Head>
-          <title></title>
+          <title>✉️ Newsletter</title>
+          <meta
+            key="og:title"
+            property="og:title"
+            content="Get the Newsletter ✉️"
+          />
+          <meta
+            key="og:image"
+            property="og:image"
+            content="/images/og/newsletter-og.png"
+          />
+          <meta
+            key="og:description"
+            property="og:description"
+            content="I write a newsletter to curate my favourite articles and thoughts on running a tech startup and building stuff that people love to use."
+          />
+          <meta
+            key="description"
+            property="description"
+            content="I write a newsletter to curate my favourite articles and thoughts on running a tech startup and building stuff that people love to use."
+          />
+          <meta property="og:url" content="https://niall.af/newsletter" />
         </Head>
         <section className="relative my-20 lg:mx-auto">
           <h1 className="font-extrabold text-5xl sm:text-7xl text-gray-900 mt-8 mb-16 sm:mt-16 sm:mb-28">

@@ -29,7 +29,7 @@ export default function Post({ post }) {
   }
 
   return (
-    <Layout absoluteOrbs>
+    <Layout>
       <div className="">
         {router.isFallback ? (
           <PostTitle>Loading…</PostTitle>
@@ -54,6 +54,8 @@ export default function Post({ post }) {
                   property="description"
                   content={post.excerpt}
                 />
+                <meta property="og:type" content="article" />
+                <meta property="og:url" content="https://niall.af/blog" />
               </Head>
               <div className="mx-auto">
                 <PostHeader

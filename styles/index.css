@@ -38,16 +38,4 @@ body {
     @apply from-niall-pink-600 to-niall-orange-600;
   }
 
-  /* .post a {
-    @apply transition duration-500 ease-in-out relative bg-clip-text text-transparent bg-gradient-to-b from-niall-pink to-niall-orange;
-  }
-  
-  .post a::after {
-    content: "";
-    @apply absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-b from-niall-pink to-niall-orange;
-  }
-  
-  .post a:hover, .post a:hover .post a::after {
-    @apply from-niall-pink-600 to-niall-orange-600;
-  } */
 }

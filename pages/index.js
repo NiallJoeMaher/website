@@ -2,13 +2,16 @@ import Head from "next/head";
 import { Layout } from "../components";
 import Image from "next/image";
 import Link from "next/link";
-import headshot from "../public/images/headshot.png";
+import headshot from "../public/images/headshot.webp";
 
 export default function Index() {
   return (
     <Layout>
       <Head>
-        <title>👋 Welcome to my site | Niall Maher</title>
+        <title>
+          👋 Welcome to my site | Niall Maher on building scalable startups.
+        </title>
+        <meta property="og:type" content="profile" />
       </Head>
       <div className="relative lg:mx-auto">
         <h1 className="font-extrabold text-5xl sm:text-7xl text-gray-900 mt-8 mb-16 sm:mt-16 sm:mb-28">
@@ -101,7 +104,6 @@ export default function Index() {
                 className="filter drop-shadow-md"
                 src={headshot}
                 alt="Niall Maher's headshot"
-                placeholder="blur"
               />
             </div>
           </div>

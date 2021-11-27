@@ -9,7 +9,23 @@ export default function Blog({ posts }) {
     <>
       <Layout>
         <Head>
-          <title>Niall Maher' Blog</title>
+          <title>✍️ Blog</title>
+          <meta
+            key="og:title"
+            property="og:title"
+            content="Niall Maher's Blog"
+          />
+          <meta
+            key="og:description"
+            property="og:description"
+            content="Blog articles and thoughts on running a tech startup and building stuff that people love to use."
+          />
+          <meta
+            key="description"
+            property="description"
+            content="Blog articles and thoughts on running a tech startup and building stuff that people love to use."
+          />
+          <meta property="og:url" content="https://niall.af/blog" />
         </Head>
         <div className="relative lg:mx-auto">
           <h1 className="font-extrabold text-5xl sm:text-7xl text-gray-900 mt-8 mb-16 sm:mt-16 sm:mb-28">

@@ -1,5 +1,4 @@
 import Head from "next/head";
-import { CMS_NAME, HOME_OG_IMAGE_URL } from "../lib/constants";
 
 export default function Meta() {
   return (
@@ -41,23 +40,26 @@ export default function Meta() {
       <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       <meta
         name="description"
-        content={`Exploring Ideas on Modern Web
-        Development and the Software Business.`}
+        content={`Articles and thoughts on running a tech startup and building stuff that people love to use.`}
         key="description"
       />
       <meta
         name="og:description"
-        content={`Exploring Ideas on Modern Web
-        Development and the Software Business.`}
+        content={`Articles and thoughts on running a tech startup and building stuff that people love to use.`}
         key="og:description"
       />
       <meta
         name="og:title"
-        content={`Niall Maher writing on Modern Web
-        Development and the Software Business.`}
+        content={`Niall Maher | On building scalable startups.`}
         key="og:title"
       />
-      <meta property="og:image" content={HOME_OG_IMAGE_URL} key="og:image" />
+      <meta
+        property="og:image"
+        content="/images/og/home-og.png"
+        key="og:image"
+      />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="https://niall.af" />
     </Head>
   );
 }

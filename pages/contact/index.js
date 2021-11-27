@@ -1,38 +1,16 @@
-import { useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
 
-import showing from "../../public/images/showingniall.png";
-
-import {
-  SUCCESS,
-  ERROR,
-  ACTIVE_SUB,
-  submitEmail,
-} from "../../utils/newsletterSignUpHelpers";
-import { NewsletterAlert } from "../../components";
+import showing from "../../public/images/showing.webp";
 
 import { Layout } from "../../components";
 
 export default function Newsletter() {
-  const [email, setEmail] = useState("");
-  const [status, setStatus] = useState(null);
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    await submitEmail({
-      email,
-      onAlreadyActive: () => setStatus(ACTIVE_SUB),
-      onSuccess: () => setStatus(SUCCESS),
-      onError: () => setStatus(ERROR),
-    });
-  };
-
   return (
     <>
       <Layout>
         <Head>
-          <title></title>
+          <title>💬 Contact</title>
         </Head>
         <section className="relative my-20 mx-2 sm:mx-6 lg:mx-auto">
           <h1 className="font-extrabold text-5xl sm:text-7xl text-gray-900 mt-8 mb-16 sm:mt-16 sm:mb-28">
@@ -73,8 +51,7 @@ export default function Newsletter() {
                 <Image
                   className="filter drop-shadow-md"
                   src={showing}
-                  alt="Niall Maher's headshot"
-                  placeholder="blur"
+                  alt="Niall showing the text in a blue t-shirt"
                 />
               </div>
             </div>
