@@ -1,7 +1,9 @@
 @tailwind base;
 
 /* Write your own custom base styles here */
-
+body {
+  @apply bg-gray-100;
+}
 /* Start purging... */
 @tailwind components;
 /* Stop purging. */
@@ -16,7 +18,11 @@
 @layer utilities {
   
   .fancy-pants-link {
-    @apply relative bg-clip-text text-transparent bg-gradient-to-b from-niall-pink to-niall-orange border-niall-orange border-b-2 font-semibold;
+    @apply relative bg-clip-text text-transparent bg-gradient-to-b from-niall-pink to-niall-orange border-niall-orange border-b-2 font-semibold transition-all duration-500;
+  }
+
+  .fancy-pants-link:hover {
+    @apply bg-gradient-to-b from-niall-pink-600 to-niall-orange-600 border-niall-orange-600;
   }
 
   .fancy-pants-active {

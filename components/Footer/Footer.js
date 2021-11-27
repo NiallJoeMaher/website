@@ -3,16 +3,39 @@ import Instagram from "../../svg/instagram.svg";
 import Linkedin from "../../svg/linkedin.svg";
 import YouTube from "../../svg/youtube.svg";
 
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
+import { NewsletterAlert } from "../";
+
+import {
+  SUCCESS,
+  ERROR,
+  ACTIVE_SUB,
+  submitEmail,
+} from "../../utils/newsletterSignUpHelpers";
+
 export default function Footer() {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState(null);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    await submitEmail({
+      email,
+      onAlreadyActive: () => setStatus(ACTIVE_SUB),
+      onSuccess: () => setStatus(SUCCESS),
+      onError: () => setStatus(ERROR),
+    });
+  };
+
   return (
-    <footer className="relative bg-gray-900 max-w-7xl py-8 mt-8 border-0 border-t rounded-lg mb-4 lg:mb-8 mx-4 xl:mx-auto">
-      <div className="mx-8">
+    <footer className="relative bg-gray-900 max-w-7xl py-8 mt-8 rounded-lg mb-4 lg:mb-8 mx-auto">
+      <div className="mx-4 md:mx-8">
         <div className="md:grid md:grid-cols-6">
           <Link href="/">
-            <a className="flex mb-6 sm:inline">
+            <a>
               <Image
                 src="/images/logo.png"
                 alt="Niall Maher logo"
@@ -21,27 +44,31 @@ export default function Footer() {
               />
             </a>
           </Link>
-          <div className="flex flex-col mb-6">
+          <div className="flex flex-col mb-6 mt-6 md:mt-0">
             <h4 className="text-lg font-bold text-gray-400 mb-2 tracking-wider uppercase">
-              More
+              Popular
             </h4>
-            <Link href="/about">
-              <a className="text-gray-300 hover:text-gray-400 mb-2">About</a>
+            <Link href="/blog">
+              <a className="text-gray-300 hover:text-gray-400 mb-2">Blog</a>
             </Link>
-            <Link href="/contact">
-              <a className="text-gray-300 hover:text-gray-400">Contact</a>
+            <Link href="/newsletter">
+              <a className="text-gray-300 hover:text-gray-400">Newsletter</a>
             </Link>
           </div>
           <div className="flex flex-col mb-6">
             <h4 className="text-lg font-bold text-gray-400 mb-2 tracking-wider uppercase">
               Useful Links
             </h4>
-            <Link href="/about">
-              <a className="text-gray-300 hover:text-gray-400 mb-2">About</a>
-            </Link>
             <Link href="/contact">
               <a className="text-gray-300 hover:text-gray-400 mb-2">Contact</a>
             </Link>
+            <a
+              target="_blank"
+              href="https://discord.gg/fV5QsWSsM8"
+              className="text-gray-300 hover:text-gray-400 mb-2"
+            >
+              Codú Discord
+            </a>
           </div>
           <div />
           <div className="col-span-2 mb-8">
@@ -49,18 +76,23 @@ export default function Footer() {
               Subscribe to my newsletter
             </h3>
             <p className="mt-4  mb-6 text-base text-gray-300">
-              Get my newsletter every Sunday morning with my thoughts, ramblings
-              and articles to help you grow your technology business.
+              I write a newsletter to curate my favourite articles and thoughts
+              on running a tech startup and building stuff that people love to
+              use. It's free with no spam.
             </p>
-            <form className="mt-4 sm:flex sm:max-w-md">
-              <label htmlFor="email-address" className="sr-only">
+            <form className="mt-4 sm:flex sm:max-w-md" onSubmit={handleSubmit}>
+              <label htmlFor="emails" className="sr-only">
                 Email address
               </label>
               <input
                 type="email"
-                name="email-address"
-                id="email-address"
+                name="email"
+                id="email"
                 autoComplete="email"
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
                 required
                 className="appearance-none min-w-0 w-full bg-white border border-transparent rounded-md py-2 px-4 text-base text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white focus:border-white focus:placeholder-gray-400"
                 placeholder="Enter your email"
@@ -74,6 +106,16 @@ export default function Footer() {
                 </button>
               </div>
             </form>
+            {status && (
+              <NewsletterAlert
+                status={status}
+                open={!!status}
+                onClose={() => {
+                  setStatus(null);
+                  setEmail("");
+                }}
+              />
+            )}
           </div>
         </div>
         <div />

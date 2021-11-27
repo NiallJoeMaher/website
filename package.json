@@ -8,12 +8,14 @@
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^14.1.2",
+    "@headlessui/react": "^1.4.2",
     "classnames": "2.2.6",
     "contentful": "^8.1.8",
     "date-fns": "2.16.1",
     "gray-matter": "4.0.2",
     "next": "12",
     "react": "^17.0.2",
+    "react-canvas-confetti": "^1.2.1",
     "react-dom": "^17.0.2",
     "remark": "13.0.0",
     "remark-html": "13.0.1"

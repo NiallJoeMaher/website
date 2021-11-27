@@ -11,12 +11,10 @@ export default function Blog({ posts }) {
         <Head>
           <title>Niall Maher' Blog</title>
         </Head>
-        <div className="relative mx-2 sm:mx-6 lg:mx-auto">
-          <div>
-            <h1 className="font-bold text-5xl sm:text-7xl text-gray-900 mt-8 mb-16 sm:mt-16 sm:mb-28">
-              The Blog
-            </h1>
-          </div>
+        <div className="relative lg:mx-auto">
+          <h1 className="font-extrabold text-5xl sm:text-7xl text-gray-900 mt-8 mb-16 sm:mt-16 sm:mb-28">
+            The Blog
+          </h1>
           <section>
             <HeroPost post={heroPost} />
             <Posts posts={morePosts} />

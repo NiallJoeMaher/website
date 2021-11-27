@@ -4,16 +4,16 @@ import { useRouter } from "next/router";
 
 const navigationContent = [
   {
+    text: "Home",
+    url: "/",
+  },
+  {
     text: "Blog",
     url: "/blog",
   },
   {
-    text: "About",
-    url: "/about",
-  },
-  {
-    text: "Contact",
-    url: "/contact",
+    text: "Newsletter",
+    url: "/newsletter",
   },
 ];
 export default function Nav() {
@@ -21,7 +21,7 @@ export default function Nav() {
 
   return (
     <div className="text-gray-500">
-      <nav className="py-4 max-w-7xl flex justify-between items-center mx-2 sm:mx-6 lg:mx-auto">
+      <nav className="py-4 max-w-7xl flex justify-between items-center lg:mx-auto">
         <Link href="/">
           <a>
             <Image
