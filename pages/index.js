@@ -8,9 +8,7 @@ export default function Index() {
   return (
     <Layout>
       <Head>
-        <title>
-          👋 Welcome to my site | Niall Maher on building scalable startups.
-        </title>
+        <title>👋 Welcome to My Site | About Niall Maher.</title>
         <meta property="og:type" content="profile" />
       </Head>
       <div className="relative lg:mx-auto">

@@ -25,8 +25,6 @@ const options = {
           <div className="relative" style={{ paddingTop: "56.25%" }}>
             <iframe
               className="absolute inset-0 w-full h-full shadow-xl"
-              // width="560"
-              // height="315"
               src={node.data.uri}
               title="YouTube video player"
               frameBorder="0"

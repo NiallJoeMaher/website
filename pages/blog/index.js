@@ -9,11 +9,13 @@ export default function Blog({ posts }) {
     <>
       <Layout>
         <Head>
-          <title>✍️ Blog</title>
+          <title>
+            ✍️ Blog | Tech Startups and Building Products People Love.
+          </title>
           <meta
             key="og:title"
             property="og:title"
-            content="Niall Maher's Blog on building scalable startups."
+            content="Niall Maher's Blog on building products people love."
           />
           <meta
             key="og:image"

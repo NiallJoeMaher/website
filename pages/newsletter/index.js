@@ -30,7 +30,9 @@ export default function Newsletter() {
     <>
       <Layout>
         <Head>
-          <title>✉️ Newsletter</title>
+          <title>
+            ✉️ Newsletter | Tech Startups and Building Stuff People Love
+          </title>
           <meta
             key="og:title"
             property="og:title"
@@ -44,12 +46,12 @@ export default function Newsletter() {
           <meta
             key="og:description"
             property="og:description"
-            content="I write a newsletter to curate my favourite articles and thoughts on running a tech startup and building stuff that people love to use."
+            content="The newsletter curates my favourite articles and thoughts on running a tech startup and building stuff that people love to use."
           />
           <meta
             key="description"
             property="description"
-            content="I write a newsletter to curate my favourite articles and thoughts on running a tech startup and building stuff that people love to use."
+            content="The newsletter curates my favourite articles and thoughts on running a tech startup and building stuff that people love to use."
           />
           <meta property="og:url" content="https://niall.af/newsletter" />
         </Head>
