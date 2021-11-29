@@ -15,9 +15,14 @@ import styles from "./blog.module.css";
 const options = {
   renderNode: {
     [BLOCKS.EMBEDDED_ASSET]: (node) => {
-      const { file, title } = node.data.target.fields;
+      const { file, title, description } = node.data.target.fields;
       const { url } = file;
-      return <img alt={title} src={`https:${url}`} />;
+      return (
+        <figure>
+          <img alt={title} src={`https:${url}`} />
+          <figcaption>{description}</figcaption>
+        </figure>
+      );
     },
     [INLINES.HYPERLINK]: (node, children) => {
       if (node.data.uri.includes("youtube.com/embed/")) {

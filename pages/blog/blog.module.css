@@ -31,21 +31,25 @@
 }
 
 .post ul > li {
-  @apply list-disc list-inside;
+  @apply list-disc ml-6;
 }
 
 .post ol > li {
-  @apply list-decimal list-inside;
+  @apply list-decimal ml-6;
+}
+
+.post > li > p {
+  @apply inline;
 }
 
 .post blockquote {
   backdrop-filter: blur(14px);
-  @apply bg-gray-600 bg-opacity-25 py-2 px-6 border-l-4 border-gray-200 leading-snug font-medium text-xl rounded-r;
+  @apply bg-gray-400 bg-opacity-25 py-2 px-6 border-l-4 border-gray-200 leading-snug font-medium text-xl rounded-r;
 }
 
 .post code {
   backdrop-filter: blur(14px);
-  @apply block bg-gray-600 bg-opacity-25 p-6 rounded overflow-y-scroll;
+  @apply block bg-gray-400 bg-opacity-25 p-6 rounded overflow-y-scroll;
 }
 
 .post i > code {
@@ -56,3 +60,10 @@
   @apply bg-gray-100 px-6 block;
 }
 
+.post > figure {
+  @apply text-gray-500 text-center my-4 flex flex-col justify-center;
+}
+
+.post > img {
+  @apply mx-auto inline-block;
+}

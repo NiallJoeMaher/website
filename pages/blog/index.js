@@ -58,7 +58,10 @@ export async function getStaticProps() {
     const entries = await client.getEntries({
       order: "sys.createdAt",
     });
-    if (entries.items) return entries.items.reverse();
+    if (entries.items)
+      return entries.items.sort((a, b) => {
+        return new Date(b.fields.date) - new Date(a.fields.date);
+      });
     console.log(`Error getting Entries for ${contentType.name}.`);
   }
 
