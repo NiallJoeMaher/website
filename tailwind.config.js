@@ -1,22 +1,19 @@
 module.exports = {
-  mode: "jit",
-  purge: {
-    content: ["./components/**/*.js", "./pages/**/*.js"],
-    safelist: [
-      "text-pink-600",
-      "bg-pink-200",
-      "text-blue-600",
-      "bg-blue-200",
-      "text-yellow-600",
-      "bg-yellow-200",
-      "text-red-600",
-      "bg-red-200",
-      "text-indigo-600",
-      "bg-indigo-200",
-      "text-green-600",
-      "bg-green-200",
-    ],
-  },
+  content: ["./components/**/*.js", "./pages/**/*.js"],
+  safelist: [
+    "text-pink-600",
+    "bg-pink-200",
+    "text-blue-600",
+    "bg-blue-200",
+    "text-yellow-600",
+    "bg-yellow-200",
+    "text-red-600",
+    "bg-red-200",
+    "text-indigo-600",
+    "bg-indigo-200",
+    "text-green-600",
+    "bg-green-200",
+  ],
   theme: {
     extend: {
       colors: {
