@@ -4,7 +4,8 @@ import Head from "next/head";
 import { BioFooter } from "../../components";
 import PostHeader from "../../components/post-header";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import { BLOCKS, INLINES } from "@contentful/rich-text-types";
+import { BLOCKS, INLINES, MARKS } from "@contentful/rich-text-types";
+import { getContentfulPostBySlug } from "../../lib/api";
 
 import PostTitle from "../../components/post-title";
 
@@ -13,7 +14,37 @@ import { Layout } from "../../components";
 import styles from "./blog.module.css";
 
 const options = {
+  renderMark: {
+    [MARKS.CODE]: (text) => {
+      console.log(text);
+      return (
+        <pre className="inline">
+          <code className="inline">{text}</code>
+        </pre>
+      );
+    },
+  },
   renderNode: {
+    [BLOCKS.PARAGRAPH]: (node, children) => {
+      console.log("----", node.content);
+      const hasCodeInline = node.content[0]?.marks?.some((markObj) => {
+        return markObj.type === "code";
+      });
+
+      console.log(hasCodeInline);
+
+      if (node.content.length === 1 && hasCodeInline) {
+        return (
+          <div className="code-block block">
+            <pre>
+              <code>{node.content[0].value}</code>
+            </pre>
+          </div>
+        );
+      }
+
+      return <p>{children}</p>;
+    },
     [BLOCKS.EMBEDDED_ASSET]: (node) => {
       const { file, title, description } = node.data.target.fields;
       const { url } = file;
@@ -64,36 +95,36 @@ export default function Post({ post }) {
           <PostTitle>Loading…</PostTitle>
         ) : (
           <>
+            <Head>
+              <title>{post.title}</title>
+              <meta key="og:title" property="og:title" content={post.title} />
+              <meta
+                key="og:image"
+                property="og:image"
+                content={`https:${post.ogImage.fields.file.url}`}
+              />
+              <meta
+                key="og:description"
+                property="og:description"
+                content={post.excerpt}
+              />
+              <meta
+                key="description"
+                property="description"
+                content={post.excerpt}
+              />
+              <meta property="og:type" content="article" />
+              <meta property="og:url" content="https://niall.af/blog" />
+            </Head>
             <article className={styles["post"]}>
-              <Head>
-                <title>{post.title}</title>
-                <meta key="og:title" property="og:title" content={post.title} />
-                <meta
-                  key="og:image"
-                  property="og:image"
-                  content={`https:${post.ogImage.fields.file.url}`}
-                />
-                <meta
-                  key="og:description"
-                  property="og:description"
-                  content={post.excerpt}
-                />
-                <meta
-                  key="description"
-                  property="description"
-                  content={post.excerpt}
-                />
-                <meta property="og:type" content="article" />
-                <meta property="og:url" content="https://niall.af/blog" />
-              </Head>
-              <div className="mx-auto">
+              <div>
                 <PostHeader
                   title={post.title}
                   coverImage={`https:${post.coverImage.fields.file.url}`}
                   date={post.date}
                 />
               </div>
-              {documentToReactComponents(post.content, options)}
+              <div>{documentToReactComponents(post.content, options)}</div>
             </article>
             <BioFooter />
           </>
@@ -120,18 +151,14 @@ async function getContentfulPosts() {
   return newPosts;
 }
 
-export async function getStaticProps({ params }) {
-  const newPosts = await getContentfulPosts();
-
-  const newPost = newPosts.filter((post) => {
-    return post.fields.slug === params.slug;
-  });
+export async function getStaticProps({ params, preview }) {
+  const post = await getContentfulPostBySlug(params.slug, preview);
 
   return {
     props: {
       post: {
-        ...newPost[0].fields,
-        content: newPost[0].fields.body,
+        ...post.fields,
+        content: post.fields.body,
       },
     },
     revalidate: 1,

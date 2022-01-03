@@ -19,6 +19,7 @@ export const submitEmail = async ({
       }),
     });
     const data = await response.json();
+
     if (data?.subscription.state === "active") onAlreadyActive();
     if (data?.subscription.state === "inactive") onSuccess();
     if (data.error) throw new Error();
