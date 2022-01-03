@@ -1,7 +1,9 @@
 @tailwind base;
 
 /* Write your own custom base styles here */
-
+body {
+  @apply bg-gray-100;
+}
 /* Start purging... */
 @tailwind components;
 /* Stop purging. */
@@ -14,29 +16,26 @@
 
 /* Your own custom utilities */
 @layer utilities {
-  .blur-background {
-    backdrop-filter: blur(14px);
-  }
-
-  .blur-background-grey {
-    background: rgba(255, 255, 255, 0.2);
-  }
-
-  .bg-gradient-fun {
-    background: linear-gradient(#c53b8e, #fe5f3d);
-  }
-
+  
   .fancy-pants-link {
-    color: #c53b8e;
-    transition: 0.3s ease-in-out all;
-    background-color: #c53b8e;
-    background-image: linear-gradient(#c53b8e, #fe5f3d);
-    background-size: 100%;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -moz-text-fill-color: transparent;
-    border-bottom: 2px solid #fe5f3d;
+    @apply relative bg-clip-text text-transparent bg-gradient-to-b from-niall-pink to-niall-orange border-niall-orange border-b-2 font-semibold transition-all duration-500;
   }
+
+  .fancy-pants-link:hover {
+    @apply bg-gradient-to-b from-niall-pink-600 to-niall-orange-600 border-niall-orange-600;
+  }
+
+  .fancy-pants-active {
+    @apply relative bg-clip-text text-transparent bg-gradient-to-b from-niall-pink to-niall-orange;
+  }
+
+  .fancy-pants-active::after {
+    content: "";
+    @apply absolute -bottom-3 left-0 right-0 h-1 bg-gradient-to-b from-niall-pink to-niall-orange;
+  }
+
+  .fancy-pants-active a:hover, .fancy-pants-active a:hover .fancy-pants-active a::after {
+    @apply from-niall-pink-600 to-niall-orange-600;
+  }
+
 }
