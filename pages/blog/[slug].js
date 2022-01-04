@@ -16,7 +16,6 @@ import styles from "./blog.module.css";
 const options = {
   renderMark: {
     [MARKS.CODE]: (text) => {
-      console.log(text);
       return (
         <pre className="inline">
           <code className="inline">{text}</code>
@@ -26,13 +25,9 @@ const options = {
   },
   renderNode: {
     [BLOCKS.PARAGRAPH]: (node, children) => {
-      console.log("----", node.content);
       const hasCodeInline = node.content[0]?.marks?.some((markObj) => {
         return markObj.type === "code";
       });
-
-      console.log(hasCodeInline);
-
       if (node.content.length === 1 && hasCodeInline) {
         return (
           <div className="code-block block">
@@ -49,9 +44,11 @@ const options = {
       const { file, title, description } = node.data.target.fields;
       const { url } = file;
       return (
-        <figure>
-          <img alt={title} src={`https:${url}`} />
-          <figcaption>{description}</figcaption>
+        <figure className="my-4">
+          <img className="mx-auto" alt={title} src={`https:${url}`} />
+          <figcaption className="mx-16 mt-4 text-center text-slate-500 text-sm">
+            {description}
+          </figcaption>
         </figure>
       );
     },
