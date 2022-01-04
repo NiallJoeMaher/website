@@ -17,10 +17,10 @@
   @apply absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-b from-niall-pink to-niall-orange;
 }
 
-.post a:hover, .post a:hover .post a::after {
+.post a:hover,
+.post a:hover .post a::after {
   @apply from-niall-pink-600 to-niall-orange-600;
 }
-
 
 .post h2 {
   @apply text-3xl mt-12 mb-4 leading-snug font-semibold;
@@ -43,7 +43,7 @@
 }
 
 .post blockquote {
-  @apply bg-slate-400 py-2 px-6 border-l-4 border-slate-200 leading-snug font-medium text-xl rounded-r;
+  @apply bg-slate-200 py-2 px-6 border-l-8 border-slate-800 leading-snug font-semibold text-xl rounded-r text-slate-800 shadow;
 }
 
 .post code {
@@ -60,12 +60,4 @@
 
 .post div > pre > code {
   @apply bg-slate-200 p-4 block text-sm overflow-y-scroll;
-}
-
-.post > figure {
-  @apply text-slate-500 text-center my-4 flex flex-col justify-center;
-}
-
-.post > img {
-  @apply mx-auto inline-block;
 }
