@@ -18,12 +18,13 @@ export const submitEmail = async ({
         email,
       }),
     });
-    const data = await response.json();
 
-    if (data?.subscription.state === "active") onAlreadyActive();
-    if (data?.subscription.state === "inactive") onSuccess();
-    if (data.error) throw new Error();
+    const data = await response.json();
+    if (data?.alreadySubscribed) return onAlreadyActive();
+    if (response.status === 200) return onSuccess();
+    if (response.status >= 400) throw new Error();
   } catch (error) {
+    console.error(error);
     onError();
   }
 };
