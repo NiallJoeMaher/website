@@ -97,7 +97,7 @@ export default function Newsletter() {
                 </p>
 
                 <div className="mt-4" onSubmit={handleSubmit}>
-                  <form className="flex">
+                  <form className="sm:flex">
                     <label htmlFor="email" className="sr-only">
                       Email address
                     </label>
@@ -114,7 +114,7 @@ export default function Newsletter() {
                         setEmail(e.target.value);
                       }}
                     />
-                    <div className="rounded-md shadow sm:mt-0 ml-3 sm:flex-shrink-0">
+                    <div className="mt-4 rounded-md shadow sm:mt-0 sm:ml-3 sm:flex-shrink-0">
                       <button
                         type="submit"
                         className="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gradient-to-b from-niall-pink to-niall-orange hover:from-niall-pink-600 hover:to-niall-orange-600 focus:ring-niall-pink-500"
