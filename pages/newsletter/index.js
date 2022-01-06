@@ -85,7 +85,7 @@ export default function Newsletter() {
               </p>
             </div>
             <div>
-              <div className="bg-gray-900 rounded-lg mx-auto lg:my-12 p-8 lg:p-12 lg:items-center">
+              <div className="bg-gray-900 rounded-lg mx-auto lg:my-12 px-4 sm:px-8 py-8 lg:p-12 lg:items-center">
                 <h2
                   className="text-3xl font-extrabold text-white sm:text-4xl"
                   id="newsletter-headline"
