@@ -1,3 +1,4 @@
+const plugin = require("tailwindcss/plugin");
 module.exports = {
   content: ["./components/**/*.js", "./pages/**/*.js"],
   safelist: [
@@ -47,5 +48,32 @@ module.exports = {
       animation: ["hover", "focus"],
     },
   },
-  plugins: [require("@tailwindcss/typography")],
+  plugins: [
+    require("@tailwindcss/typography"),
+    plugin(({ addComponents }) => {
+      const components = {
+        ".parallax": {
+          "transform-style": "preserve-3d",
+        },
+        ".parallax-container": {
+          "transform-style": "preserve-3d",
+          transform: "rotateY(calc(var(--x, 0) * -20deg))",
+        },
+        ".parallax-item": {
+          filter:
+            "drop-shadow(0 10px 8px hsl(0 0% 15% / 0.35)) drop-shadow(0 4px 3px hsl(0 0% 15% / 0.35))",
+          "transform-style": "preserve-3d",
+          transform: `
+              translate(-50%, -50%)
+              translate(calc(var(--offset-x, 0) * 1%), calc(var(--offset-y, 0) * 1%))
+              translate(calc((var(--x, 0) * var(--translate-x, 0) * 1%)), calc((var(--y, 0) * var(--translate-y, 0) * 1%)))
+              translate3d(0, 0, calc(var(--offset-z, 0) * 1vmin))
+            `,
+          // Example:: If x is at -1 and that's the left side of the screen
+          // and translate-x is -50 then it would be -1 * -50 * 1% === 50%
+        },
+      };
+      addComponents(components);
+    }),
+  ],
 };

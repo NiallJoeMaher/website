@@ -1,8 +1,121 @@
 import Head from "next/head";
+import { useEffect, useRef } from "react";
 import { Layout } from "../components";
 import Image from "next/image";
 import Link from "next/link";
+
 import headshot from "../public/images/headshot.webp";
+
+import main from "../public/images/head_main.png";
+import orange from "../public/images/head_orange.png";
+import pink from "../public/images/head_pink.png";
+
+const ITEMS = [
+  {
+    id: "orange",
+    src: orange,
+    styleProps: {
+      "offset-x": -24,
+      "offset-y": -12,
+      "translate-x": 10,
+      "translate-y": 10,
+      "offset-z": -5,
+    },
+  },
+  {
+    id: "pink",
+    src: pink,
+    styleProps: {
+      "offset-x": 24,
+      "offset-y": 12,
+      "translate-x": 5,
+      "translate-y": -15,
+      "offset-z": 0,
+    },
+  },
+  {
+    id: "main",
+    src: main,
+    styleProps: {
+      "offset-x": 0,
+      "offset-y": 0,
+      "translate-x": 10,
+      "translate-y": 2,
+      "offset-z": 5,
+    },
+  },
+];
+
+const mapRange = (inputLower, inputUpper, outputLower, outputUpper) => {
+  const INPUT_RANGE = inputUpper - inputLower;
+  const OUTPUT_RANGE = outputUpper - outputLower;
+  return (value) =>
+    outputLower + (((value - inputLower) / INPUT_RANGE) * OUTPUT_RANGE || 0);
+};
+
+const BobbleHead = ({ bounds = 100 }) => {
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const UPDATE = ({ x, y }) => {
+      // Create coefficient ranges
+      const proximity = 200;
+      const containerBounds = containerRef.current.getBoundingClientRect();
+      const centerX = containerBounds.left + containerBounds.width / 2;
+      const centerY = containerBounds.top + containerBounds.height / 2;
+      const MAPPED_X = mapRange(
+        centerX - proximity,
+        centerX + proximity,
+        -bounds,
+        bounds
+      )(x);
+      const MAPPED_Y = mapRange(
+        centerY - proximity,
+        centerY + proximity,
+        -bounds,
+        bounds
+      )(y);
+      containerRef.current.style.setProperty(
+        "--x",
+        `clamp(-1, ${MAPPED_X / 100}, 1)`
+      );
+      containerRef.current.style.setProperty(
+        "--y",
+        `clamp(-1, ${MAPPED_Y / 100}, 1)`
+      );
+    };
+    document.addEventListener("pointermove", UPDATE);
+    return () => {
+      document.removeEventListener("pointermove", UPDATE);
+    };
+  }, []);
+  return (
+    <div ref={containerRef} className="h-full w-full relative parallax">
+      <div className="h-full w-full relative parallax-container">
+        {ITEMS.map(({ id, src, styleProps }) => {
+          const styles = {};
+          Object.keys(styleProps).forEach(
+            (key) => (styles[`--${key}`] = styleProps[key])
+          );
+          return (
+            <div
+              className="absolute parallax-item h-3/4 w-3/4 top-1/2 left-1/2 z-20"
+              key={id}
+              style={styles}
+            >
+              <Image
+                layout="fill"
+                objectFit="contain"
+                src={src}
+                className="fil"
+              />
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
 
 export default function Index() {
   return (
@@ -97,12 +210,8 @@ export default function Index() {
                 .
               </p>
             </div>
-            <div className="relative m-auto p-10">
-              <Image
-                className="filter drop-shadow-md"
-                src={headshot}
-                alt="Niall Maher's headshot"
-              />
+            <div className="relative m-auto p-10 h-full w-full">
+              <BobbleHead />
             </div>
           </div>
         </main>
@@ -110,6 +219,9 @@ export default function Index() {
     </Layout>
   );
 }
+// <div className="absolute top-0 left-0 opacity-75 z-10">
+//   <Image src={headshot} />
+// </div>
 
 export async function getStaticProps() {
   const client = require("contentful").createClient({
