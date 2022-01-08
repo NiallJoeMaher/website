@@ -4,8 +4,6 @@ import { Layout } from "../components";
 import Image from "next/image";
 import Link from "next/link";
 
-import headshot from "../public/images/headshot.webp";
-
 import main from "../public/images/head_main.png";
 import orange from "../public/images/head_orange.png";
 import pink from "../public/images/head_pink.png";
@@ -21,6 +19,7 @@ const ITEMS = [
       "translate-y": 10,
       "offset-z": -5,
     },
+    shadows: [-5],
   },
   {
     id: "pink",
@@ -32,6 +31,7 @@ const ITEMS = [
       "translate-y": -15,
       "offset-z": 0,
     },
+    shadows: [-5],
   },
   {
     id: "main",
@@ -43,6 +43,7 @@ const ITEMS = [
       "translate-y": 2,
       "offset-z": 5,
     },
+    shadows: [-5, 0],
   },
 ];
 
@@ -53,13 +54,12 @@ const mapRange = (inputLower, inputUpper, outputLower, outputUpper) => {
     outputLower + (((value - inputLower) / INPUT_RANGE) * OUTPUT_RANGE || 0);
 };
 
-const BobbleHead = ({ bounds = 100 }) => {
+const BobbleHead = ({ items = ITEMS, bounds = 100, proximity = 200 }) => {
   const containerRef = useRef(null);
 
   useEffect(() => {
     const UPDATE = ({ x, y }) => {
       // Create coefficient ranges
-      const proximity = 200;
       const containerBounds = containerRef.current.getBoundingClientRect();
       const centerX = containerBounds.left + containerBounds.width / 2;
       const centerY = containerBounds.top + containerBounds.height / 2;
@@ -90,9 +90,12 @@ const BobbleHead = ({ bounds = 100 }) => {
     };
   }, []);
   return (
-    <div ref={containerRef} className="h-full w-full relative parallax">
+    <div
+      ref={containerRef}
+      className="h-64 w-64 sm:h-96 sm:w-96 mx-auto md:mx-0 md:h-full md:w-full relative parallax"
+    >
       <div className="h-full w-full relative parallax-container">
-        {ITEMS.map(({ id, src, styleProps }) => {
+        {ITEMS.map(({ id, src, styleProps, shadows }) => {
           const styles = {};
           Object.keys(styleProps).forEach(
             (key) => (styles[`--${key}`] = styleProps[key])
@@ -107,8 +110,22 @@ const BobbleHead = ({ bounds = 100 }) => {
                 layout="fill"
                 objectFit="contain"
                 src={src}
-                className="fil"
+                className="fill"
               />
+              {shadows.map((shadow) => (
+                <img
+                  style={{
+                    "--offset-z":
+                      (Math.abs(shadow) +
+                        (Math.abs(styleProps["offset-z"]) || 0)) *
+                      -1,
+                  }}
+                  className={`object-contain h-full absolute preserve-3d parallax-shadow blur-${
+                    shadow >= 0 ? "sm" : "md"
+                  } brightness-0 opacity-${shadow >= 0 ? 75 : 50}`}
+                  src={src.src}
+                />
+              ))}
             </div>
           );
         })}
