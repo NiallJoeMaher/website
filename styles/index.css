@@ -37,8 +37,4 @@ body {
   .fancy-pants-active a:hover .fancy-pants-active a::after {
     @apply from-niall-pink-600 to-niall-orange-600;
   }
-
-  .preserve-3d: {
-    transform-style: preserve-3d;
-  }
 }

@@ -54,7 +54,7 @@ const mapRange = (inputLower, inputUpper, outputLower, outputUpper) => {
     outputLower + (((value - inputLower) / INPUT_RANGE) * OUTPUT_RANGE || 0);
 };
 
-const BobbleHead = ({ items = ITEMS, bounds = 100, proximity = 200 }) => {
+const BobbleHead = ({ bounds = 120, proximity = 400 }) => {
   const containerRef = useRef(null);
 
   useEffect(() => {
@@ -106,12 +106,7 @@ const BobbleHead = ({ items = ITEMS, bounds = 100, proximity = 200 }) => {
               key={id}
               style={styles}
             >
-              <Image
-                layout="fill"
-                objectFit="contain"
-                src={src}
-                className="fill"
-              />
+              <Image layout="fill" objectFit="contain" src={src} />
               {shadows.map((shadow) => (
                 <img
                   style={{
@@ -120,8 +115,8 @@ const BobbleHead = ({ items = ITEMS, bounds = 100, proximity = 200 }) => {
                         (Math.abs(styleProps["offset-z"]) || 0)) *
                       -1,
                   }}
-                  className={`object-contain h-full absolute preserve-3d parallax-shadow blur-${
-                    shadow >= 0 ? "sm" : "md"
+                  className={`object-contain h-full absolute parallax-shadow blur-${
+                    shadow >= 0 ? "md" : "lg"
                   } brightness-0 opacity-${shadow >= 0 ? 75 : 50}`}
                   src={src.src}
                 />
