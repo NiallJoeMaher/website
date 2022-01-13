@@ -5,3 +5,4 @@ export { default as Layout } from "./Layout/Layout";
 export { default as Nav } from "./Nav/Nav";
 export { default as Posts } from "./Posts/Posts";
 export { default as NewsletterAlert } from "./NewsletterAlert/NewsletterAlert";
+export { default as BobbleHead } from "./BobbleHead/BobbleHead";
