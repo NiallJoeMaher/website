@@ -14,6 +14,11 @@ module.exports = {
     "bg-indigo-200",
     "text-green-600",
     "bg-green-200",
+    "blur-md",
+    "blur-lg",
+    "opacity-0",
+    "opacity-50",
+    "opacity-75",
   ],
   theme: {
     extend: {
@@ -54,14 +59,18 @@ module.exports = {
       const components = {
         ".parallax": {
           "transform-style": "preserve-3d",
+          "--x": "clamp(-1, var(--coefficient-x), 1)",
+          "--y": "clamp(-1, var(--coefficient-y), 1)",
         },
         ".parallax-container": {
           "transform-style": "preserve-3d",
-          transform: "rotateY(calc(var(--x, 0) * -20deg))",
+          transform:
+            " rotateY(calc(var(--x, 0) * 15deg)) rotateX(calc(var(--y, 0) * -15deg))",
+        },
+        ".parallax-shadow": {
+          transform: "translate3d(0, 0, calc(var(--offset-z, 0) * 1vmin))",
         },
         ".parallax-item": {
-          filter:
-            "drop-shadow(0 10px 8px hsl(0 0% 15% / 0.35)) drop-shadow(0 4px 3px hsl(0 0% 15% / 0.35))",
           "transform-style": "preserve-3d",
           transform: `
               translate(-50%, -50%)
