@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Head from "next/head";
 import Link from "next/link";
 
@@ -12,7 +12,7 @@ import { NewsletterAlert } from "../../components";
 
 import { Layout } from "../../components";
 
-export default function Newsletter() {
+export default function Newsletter({ issues }) {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState(null);
 
@@ -123,15 +123,48 @@ export default function Newsletter() {
                       </button>
                     </div>
                   </form>
-                  {/* <p className="mt-3 text-sm text-gray-300">
-                    We care about the protection of your data. Read our{" "}
-                    <a href="#" className="text-white font-medium underline">
-                      Privacy Policy.
-                    </a>
-                  </p> */}
                 </div>
               </div>
             </div>
+          </div>
+          <h3 className="mt-8 text-gray-800 font-bold text-3xl">
+            Recent issues
+          </h3>
+          <div className="mt-4 pt-4 grid gap-16 lg:grid-cols-2 lg:gap-x-5 lg:gap-y-12">
+            {issues.map((post) => {
+              const date = new Date(post.sent_at);
+              const formattedDate = `${date.getDate()}/${
+                date.getMonth() + 1
+              }/${date.getFullYear()}`;
+
+              return (
+                <div key={post.title}>
+                  <p className="text-sm text-gray-500">
+                    <time dateTime={post.sent_at}>{formattedDate}</time>
+                  </p>
+                  <a
+                    href={post.url}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className="mt-2 block"
+                  >
+                    <p className="text-xl font-semibold text-gray-800">
+                      {post.title}
+                    </p>
+                  </a>
+                  <div className="mt-2">
+                    <a
+                      href={post.url}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      className="text-base font-semibold fancy-pants-link"
+                    >
+                      Read Issue
+                    </a>
+                  </div>
+                </div>
+              );
+            })}
           </div>
           {status && (
             <NewsletterAlert
@@ -147,4 +180,21 @@ export default function Newsletter() {
       </Layout>
     </>
   );
+}
+
+export async function getStaticProps() {
+  const response = await fetch("https://www.getrevue.co/api/v2/issues", {
+    headers: {
+      Authorization: `Token ${process.env.REVUE_KEY}`,
+      "Content-Type": "application/json",
+    },
+  });
+  const issues = await response.json();
+
+  return {
+    props: {
+      issues,
+    },
+    revalidate: 10, // In seconds
+  };
 }
