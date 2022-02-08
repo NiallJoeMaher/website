@@ -15,6 +15,10 @@ const navigationContent = [
     text: "Newsletter",
     url: "/newsletter",
   },
+  {
+    text: "Podcast",
+    url: "/podcast",
+  },
 ];
 export default function Nav() {
   const router = useRouter();

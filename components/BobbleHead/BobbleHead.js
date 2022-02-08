@@ -142,7 +142,7 @@ const BobbleHead = ({ bounds = 100, proximity = 200 }) => {
                             : 0.5
                           : 0,
                     }}
-                    tansition
+                    transition
                     style={{
                       "--offset-z":
                         (Math.abs(shadow) +
