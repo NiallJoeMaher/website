@@ -1,9 +1,7 @@
 import Head from "next/head";
 import { Layout, BobbleHead } from "../components";
 import Link from "next/link";
-import dynamic from "next/dynamic";
 
-// const BobbleHead = dynamic(() => import("../components/BobbleHead/BobbleHead"));
 export default function Index() {
   return (
     <Layout>
@@ -106,9 +104,6 @@ export default function Index() {
     </Layout>
   );
 }
-// <div className="absolute top-0 left-0 opacity-75 z-10">
-//   <Image src={headshot} />
-// </div>
 
 export async function getStaticProps() {
   const client = require("contentful").createClient({
