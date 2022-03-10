@@ -37,10 +37,12 @@ export default function Nav() {
           </a>
         </Link>
         <div className="flex items-center">
-          {navigationContent.map((item) => (
+          {navigationContent.map((item, idx) => (
             <Link key={item.url} href={item.url}>
               <a
-                className={`mr-6 inline-block text-lg font-semibold${
+                className={`${
+                  idx !== 0 ? "ml-6" : ""
+                } inline-block text-base sm:text-lg font-semibold${
                   router.pathname == item.url ? " fancy-pants-active" : ""
                 }`}
               >
