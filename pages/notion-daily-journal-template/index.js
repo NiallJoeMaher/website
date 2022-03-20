@@ -42,7 +42,7 @@ export default function Newsletter() {
           <meta
             key="og:image"
             property="og:image"
-            content="/images/og/newsletter-og.png"
+            content="/images/og/daily-planner.png"
           />
           <meta
             key="og:description"
@@ -74,19 +74,10 @@ export default function Newsletter() {
             want to accomplish, and how you can best achieve your goals. It's
             perfect for anyone who wants to stay organised and productive!
           </p>
-          <div className="flex justify-center">
-            <Image
-              className="rounded-ls shadow-2xl"
-              layout="intrinsic"
-              width={1180}
-              height={1000}
-              src="/images/notion/journal.png"
-              alt="Screenshot of the daily journal template"
-            />
-          </div>
+
           {unlocked && (
             <div>
-              <p className="mb-2 mt-8 tracking-tight text-gray-500 text-lg sm:text-xl">
+              <p className="mb-2 mt-8 font-medium tracking-tight text-gray-600 text-lg sm:text-xl">
                 Duplicate your free template by clicking the "Duplicate" button
                 on the top right of the page.
               </p>
@@ -94,7 +85,7 @@ export default function Newsletter() {
                 👉{"  "}
                 <a
                   target="_blank"
-                  href="https://www.notion.so/nialljoemaher/Your-Daily-Journal-e33e02b0a2c64b2aaaa0052a6e0514f6"
+                  href="https://nialljoemaher.notion.site/Your-Daily-Journal-e33e02b0a2c64b2aaaa0052a6e0514f6"
                   className="fancy-pants-link text-lg sm:text-xl"
                 >
                   Here's your free template.
@@ -141,7 +132,7 @@ export default function Newsletter() {
                           type="submit"
                           className="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gradient-to-b from-niall-pink to-niall-orange hover:from-niall-pink-600 hover:to-niall-orange-600 focus:ring-niall-pink-500"
                         >
-                          Subscribe
+                          Get the template
                         </button>
                       </div>
                     </form>
@@ -150,7 +141,16 @@ export default function Newsletter() {
               </div>
             </div>
           )}
-
+          <div className="flex justify-center mt-8">
+            <Image
+              className="rounded-lg shadow-2xl"
+              layout="intrinsic"
+              width={1180}
+              height={1000}
+              src="/images/notion/journal.png"
+              alt="Screenshot of the daily journal template"
+            />
+          </div>
           {status && (
             <NewsletterAlert
               status={status}
