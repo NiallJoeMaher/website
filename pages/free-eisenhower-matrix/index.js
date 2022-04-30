@@ -67,6 +67,18 @@ export default function Newsletter() {
             activities.
           </p>
 
+          <p className="font-base mb-8 tracking-tight text-gray-600 text-lg sm:text-xl max-w-2xl">
+            Learn how to use this template{" "}
+            <a
+              href="https://www.getrevue.co/profile/niall/archive/1149342"
+              target="_blank"
+              className="fancy-pants-link"
+            >
+              here
+            </a>
+            .
+          </p>
+
           {unlocked && (
             <div>
               <div className="text-lg sm:text-xl">
