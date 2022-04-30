@@ -33,7 +33,7 @@ export default function Newsletter() {
     <>
       <Layout>
         <Head>
-          <title>📚 Free Notion Daily Planner Template</title>
+          <title>📚 Free Eisenhower Matrix Template</title>
           <meta
             key="og:title"
             property="og:title"
