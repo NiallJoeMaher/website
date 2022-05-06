@@ -18,22 +18,6 @@ export default function Index() {
           <div className="flex flex-col-reverse md:grid grid-cols-2">
             <div>
               <p className="mb-8">
-                💫 I am a founder of{" "}
-                <a
-                  target="_blank"
-                  className="fancy-pants-link"
-                  href="https://myqu.io/"
-                >
-                  MyQu
-                </a>
-                , where we believe that{" "}
-                <span className="font-semibold">
-                  great people create great companies
-                </span>
-                , and we help companies win in business by helping to hire great
-                people.
-              </p>
-              <p className="mb-8">
                 ✏️ I've worked in nearly every corner of technology businesses;
                 Lead Developer, Software Architect, Product Manager, CTO and now
                 happily a Founder.
